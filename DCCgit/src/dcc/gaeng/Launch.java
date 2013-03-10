@@ -1,0 +1,15 @@
+package dcc.gaeng;
+
+import java.io.File;
+
+public class Launch {
+
+	public static void start(dcc.DCoutputH log){
+		log.println("GAME STARTING");
+		File mapfile=dcc.m.system.getfile.one(log);
+                Game game = new Game();
+                game.setup(mapfile, log);
+		GameLoop GL = new GameLoop(game, log);
+                GL.start();
+	}
+}
