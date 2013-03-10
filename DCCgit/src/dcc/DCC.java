@@ -6,6 +6,7 @@ package dcc;
 public class DCC {
 
     public static void main(String[] args) {
-        // TODO Let's go
+        DCboot run = new dcc.DCboot();
+        run.main();
     }
 }
