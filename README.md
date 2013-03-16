@@ -8,5 +8,27 @@ D-C00DE Core is a main part of D-C00DE.It's written in java, and contains all ma
 
 Main language is Polish.
 
-Licensed under DLoc license ;)
-(I'm writting it now)
+Licensed under DLoc license (i wrote it)
+
+    <---======[ D-LIC open code ]======--->
+
+ WHO IS WHO?
+
+  * project - thing licensed using this license
+  * code - uncompiled project
+  * binary - compiled project
+  * creator - person who started the project
+  * contributor - person who helped creator or fixed the project
+  * coder - person who wants to edit the code and publish it
+  * user - person who just wants to use the binary
+
+ SO:
+
+  1. user can always use the binary and redistribute it but he/she must provide link to the project's website.
+  2. coder is allowed to do anything with the code and publish edited version (remember to write information that it's based on the project, and provide link to the project's website). coder is also allowed to change the licence but the creator must be able to acces source of edited version.
+  3. contributors are always welcome, and their help too, but remember that if you are contributing to the project your code is owned by the creator.
+  4. all contributors must be listed in special file included in the project.
+  5. this license applies to all files of the project, and shouldbe shipped with it.
+  
+        <=>---<>--{2013 stuDIO}--<>---<=>
+
