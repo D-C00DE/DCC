@@ -10,7 +10,7 @@ public class Cffile {
     public File file;
     
     public String app;
-    public int appver;
+    public String appver;
     
     public String names[];
     public boolean booleans[];

@@ -1,5 +1,6 @@
 package dcc.dcfg;
 
+import dcc.DCoutputH;
 import java.io.File;
 /**
  *
@@ -7,9 +8,13 @@ import java.io.File;
  */
 public class CFG {
     Cffile cfg;
+    DCoutputH log;
     
-    public CFG(File file){
+    public CFG(File file, DCoutputH logI){
         //TODO Cfg manager structure
-        cfg = LoadCfg.load(file);
+        log = logI;
+        LoadCfg loader = new LoadCfg();
+        cfg = loader.load(file, log);
+        loader = null;
     }
 }
