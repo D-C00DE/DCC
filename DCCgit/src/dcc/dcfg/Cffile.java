@@ -1,12 +1,16 @@
 package dcc.dcfg;
 
+import java.io.File;
+
 /**
  * @author dusakusD
  */
 public class Cffile {
-    public String title;
-    public String info;
-    public int fileCode;
+    
+    public File file;
+    
+    public String app;
+    public int appver;
     
     public String names[];
     public boolean booleans[];
