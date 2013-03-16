@@ -1,26 +1,14 @@
-DCC
-===
-
-D-C00DE Core is a main part of D-C00DE.It's written in java, and contains all main modules:
-  gaeng/gaengLWJGL (game engine), 
-  frame(window system) 
-  cfg (config handler).
-
-Main language is Polish.
-
-Licensed under DLoc license (i wrote it)
-
-    <---======[ D-LIC open code ]======--->
+    <---======[ D-LIC open code 0.2 ]======--->
 
  WHO IS WHO?
 
-  * project - thing licensed using this license
-  * code - uncompiled project
-  * binary - compiled project
-  * creator - person who started the project
-  * contributor - person who helped creator or fixed the project
-  * coder - person who wants to edit the code and publish it
-  * user - person who just wants to use the binary
+   project - thing licensed using this license
+   code - uncompiled project
+   binary - compiled project
+   creator - person who started the project
+   contributor - person who helped creator or fixed the project
+   coder - person who wants to edit the code and publish it
+   user - person who just wants to use the binary
 
  SO:
 
@@ -31,4 +19,3 @@ Licensed under DLoc license (i wrote it)
   5. this license applies to all files of the project, and shouldbe shipped with it.
   
         <=>---<>--{2013 stuDIO}--<>---<=>
-
