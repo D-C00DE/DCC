@@ -7,7 +7,7 @@ import java.io.File;
  * @author dusakusD
  */
 public class CFG {
-    Cffile cfg;
+    public Cffile cfg;
     DCoutputH log;
     
     public CFG(File file, DCoutputH logI){

@@ -5,8 +5,7 @@ import dcc.DCoutputH;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import dcc.sify.SimString;
 
 /**
  * @author dusakusD
@@ -65,18 +64,18 @@ public class LoadCfg {
         read = new BufferedReader(new FileReader(cfg.file));
         String line;
         line = read.readLine();
-        line = dcc.sify.SimString.rmTo(line, sf);
-        line = dcc.sify.SimString.rmFrom(line, ef);
+        line = SimString.rmTo(line, sf);
+        line = SimString.rmFrom(line, ef);
         ver = Info.supported.contains(line);
             log.println(line);
         line = read.readLine();
-        line = dcc.sify.SimString.rmTo(line, sf);
-        line = dcc.sify.SimString.rmFrom(line, ef);
+        line = SimString.rmTo(line, sf);
+        line = SimString.rmFrom(line, ef);
         cfg.app = line;
             log.println(line);
         line = read.readLine();
-        line = dcc.sify.SimString.rmTo(line, sf);
-        line = dcc.sify.SimString.rmFrom(line, ef);
+        line = SimString.rmTo(line, sf);
+        line = SimString.rmFrom(line, ef);
         cfg.appver = line;
             log.println(line);
         read.close();
@@ -85,8 +84,37 @@ public class LoadCfg {
     }
     private boolean readL(String line) throws IOException {
         if(readLineCheck(line)){
-            
-            return true;
+            //put line reading code here
+           line = SimString.rmFrom(line, '#');
+           String typeS = SimString.rmFrom(line, ':');
+           typeS = typeS.trim();
+           String name = SimString.rmTo(line, ':');
+           name = SimString.rmFrom(name, '=');
+           name = name.trim();
+           String valueS = SimString.rmTo(line, '=');
+           valueS = valueS.trim();
+           Cob out = new Cob(name);
+               if(typeS.equals("B")){
+                   if(valueS.equalsIgnoreCase("true")){
+                       out.valueB = true;
+                   }
+                   else{
+                       out.valueB = false;
+                   }
+               }
+               else if (typeS.equals("I")){
+                   out.valueI = Integer.parseInt(valueS);
+        }
+               else if (typeS.equals("D")){
+                   out.valueD = Double.parseDouble(valueS);
+               }
+               else if (typeS.equals("S")){
+                   out.valueS = valueS.trim();
+           }
+           log.println("Wrote value " + valueS + " of type " + typeS + " as " + name + " to data tabble");
+           log.println(out.name);
+           log.println(out.valueS);
+           return true;
         }
         else{
             log.println("Skipping comment/invalid line");
@@ -99,10 +127,10 @@ public class LoadCfg {
         log.println("===> Now validating: " + line);
         a = line.startsWith("#");
         String lineb = line;
-        lineb = dcc.sify.SimString.rmTo(line, ':');
+        lineb = SimString.rmTo(line, ':');
         b = lineb.contains(":");
         lineb = line;
-        lineb = dcc.sify.SimString.rmTo(line, '=');
+        lineb = SimString.rmTo(line, '=');
         c = lineb.contains("=");
         d = line.contains(":");
         e = line.contains("=");
