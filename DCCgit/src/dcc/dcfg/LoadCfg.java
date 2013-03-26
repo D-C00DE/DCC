@@ -94,23 +94,26 @@ public class LoadCfg {
            String valueS = SimString.rmTo(line, '=');
            valueS = valueS.trim();
            Cob out = new Cob(name);
-               if(typeS.equals("B")){
-                   if(valueS.equalsIgnoreCase("true")){
-                       out.valueB = true;
-                   }
-                   else{
-                       out.valueB = false;
-                   }
-               }
-               else if (typeS.equals("I")){
-                   out.valueI = Integer.parseInt(valueS);
-        }
-               else if (typeS.equals("D")){
-                   out.valueD = Double.parseDouble(valueS);
-               }
-               else if (typeS.equals("S")){
-                   out.valueS = valueS.trim();
-           }
+            switch (typeS) {
+                case "B":
+                    if(valueS.equalsIgnoreCase("true")){
+                        out.valueB = true;
+                    }
+                    else{
+                        out.valueB = false;
+                    }
+                    break;
+                case "I":
+                    out.valueI = Integer.parseInt(valueS);
+                    break;
+                case "D":
+                    out.valueD = Double.parseDouble(valueS);
+                    break;
+                case "S":
+                    out.valueS = valueS.trim();
+                    break;
+            }
+           cfg.add(out);
            log.println("Wrote value " + valueS + " of type " + typeS + " as " + name + " to data tabble");
            log.println(out.name);
            log.println(out.valueS);
