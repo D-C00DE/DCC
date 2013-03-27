@@ -23,11 +23,12 @@ public class DCoutputH {
     }
     public boolean println (String input){
 		System.out.println("[" + timed.format(time) + "] " + input);
+                //TODO logging to file ...
 		return true;
 	}
     public void println (String pre,MultiString input){
-		for (int c = 0;c-1<input.lines;c++){
-                System.out.println("[" + timed.format(time) + "] "+ pre + input.line[c]);
+		for (int c = 1;c-1<input.lines;c++){
+                this.println(pre + (String) input.line.get(c));
                 }
     }
     public boolean println (String input,String mode){
