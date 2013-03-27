@@ -48,7 +48,7 @@ public class Cffile {
         log.println("====]Now looking for ", "D");
         boolean run = true;
         int id = 0;
-        String checking;
+        String checking = "NULL";
         boolean found = false;
         while (run){
             id++;
@@ -58,20 +58,16 @@ public class Cffile {
                 return 1;
             }
             else{
-                checking = (String) names.get(id);
+                try{checking = (String) names.get(id);}
+                catch(IndexOutOfBoundsException ex){run = false;log.println("Reached end of list", "D");}
                 log.println("==]" +checking, "D");
             if (checking.equalsIgnoreCase(find)){
                 log.println("==]found data titled " + find, "D");
                 run = false;
             }
+            else{log.println("==]" +find + " wasn't found at " + id, "D");}
         //return if found
-            if(found == true){
-                run = false;
-                return id;
-            }
-        //continue
-            log.println("==]" +find + " wasn't found at " + id, "D");
-            
+            if(found == true){run = false;return id;}
             }
         }
         return 1;
@@ -80,6 +76,6 @@ public class Cffile {
         
     }
     public void test(){
-        log.println(this.get("title").name, "D");
+        log.println(this.get("PAR").name, "D");
     }
 }
