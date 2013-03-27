@@ -1,17 +1,19 @@
 package dcc.sify;
 
+import java.util.ArrayList;
+
 /**
  * @author dusakus
  */
 public class MultiString {
     public final int lines;
-    public String[] line;
+    public ArrayList line = new ArrayList();
     
     public MultiString(int linesI){
         lines = linesI;
-        line = new String[lines];
+        line.add(0, "null");
     }
     public void addL(String linein){
-        line[line.length + 1] = linein;
+        line.add(line.size(),linein);
     }
 }
