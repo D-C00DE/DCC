@@ -50,7 +50,7 @@ public class DCoutputH {
                     case "E3":
                         this.println("[E3] I have very bad news");
                         this.println("[E3]=> " + input);
-                        this.println("[E3] <hardly continues it's work>");
+                        this.println("[E3] <Skips the problematic thingy>");
                         break;
                     case "E4":
                         this.println("[E4] Oh, it hurts so much");
@@ -61,7 +61,7 @@ public class DCoutputH {
                     case "E5":
                         this.println("[E5] Critical error ocured:");
                         this.println("[E5]=> " + input);
-                        this.println("[E5] Killing in 1 second");
+                        this.println("[E5] Killing in NOW");
                         this.println("!!!ERROR!!!");
                         System.exit(2);
                     case "D":
@@ -95,7 +95,7 @@ public class DCoutputH {
                     case "E3":
                         this.println("[E3] I have very bad news");
                         this.println("[E3]=> ",input);
-                        this.println("[E3] <hardly continues it's work>");
+                        this.println("[E3] <Skips the problematic thingy>");
                         break;
                     case "E4":
                         this.println("[E4] Oh, it hurts so much");
@@ -106,7 +106,7 @@ public class DCoutputH {
                     case "E5":
                         this.println("[E5] Critical error ocured:");
                         this.println("[E5]=> ",input);
-                        this.println("[E5] Killing in 1 second");
+                        this.println("[E5] Killing in NOW");
                         this.println("!!!ERROR!!!");
                         System.exit(2);
                     case "D":

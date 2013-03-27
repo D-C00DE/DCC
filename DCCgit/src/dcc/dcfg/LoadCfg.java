@@ -2,6 +2,7 @@ package dcc.dcfg;
 
 import java.io.File;
 import dcc.DCoutputH;
+import dcc.sify.MultiString;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -23,6 +24,10 @@ public class LoadCfg {
             readF();
         } catch (IOException ex) {
             log.println("!!! Something went wrong !!!");
+            MultiString err = new MultiString(2);
+            err.addL("An exception occured during reading data from");
+            err.addL(fileI.toString());
+            log.println(err, "E3");
         }
        return cfg;
     }
@@ -48,14 +53,14 @@ public class LoadCfg {
             
         }
         else {
-            log.println("Something went wrong when tried to load config file");
+            log.println("looks like the header of this file is broken","E3");
         }
         
         
     }
 
     private boolean readH() throws IOException {
-        log.println("Begin to read header of " + cfg.file);
+        log.println("Begin to read header of " + cfg.file, "D");
         log.println("=================================");
         char sf = '<';
         char ef = '>';
@@ -116,14 +121,14 @@ public class LoadCfg {
            return true;
         }
         else{
-            log.println("Skipping comment/invalid line");
+            log.println("Skipping comment/invalid line", "D");
             return false;
         }
  
     }
     private boolean readLineCheck(String line){
         boolean a; boolean b; boolean c; boolean d; boolean e;
-        log.println("===> Now validating: " + line);
+        log.println("===> Now validating: " + line, "D");
         a = line.startsWith("#");
         String lineb = line;
         lineb = SimString.rmTo(line, ':');
@@ -138,31 +143,31 @@ public class LoadCfg {
                 if (c == false){
                     if (d){
                         if (e){
-                            log.println("===> Passed");
+                            log.println("===> Passed", "D");
                             return true;
                         }
                         else{
-                            log.println("===> Invalid line");
+                            log.println("===> Invalid line", "D");
                             return false;
                         }
                         }
                         else{
-                            log.println("===> Invalid line");
+                            log.println("===> Invalid line", "D");
                             return false;
                     }
                     }
                         else{
-                            log.println("===> Invalid line");
+                            log.println("===> Invalid line", "D");
                             return false;
                 }
                 }
                         else{
-                            log.println("===> Invalid line");
+                            log.println("===> Invalid line", "D");
                             return false;
             }
             }
                         else{
-                            log.println("===> Invalid line");
+                            log.println("===> Invalid line", "D");
                             return false;
         }
         

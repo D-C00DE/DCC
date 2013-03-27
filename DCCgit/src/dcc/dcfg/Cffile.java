@@ -45,7 +45,7 @@ public class Cffile {
         return (Cob) data.get(addr);
     }
     private int find(String find){
-        log.println("====]Now looking for " + "D");
+        log.println("====]Now looking for ", "D");
         boolean run = true;
         int id = 0;
         String checking;
