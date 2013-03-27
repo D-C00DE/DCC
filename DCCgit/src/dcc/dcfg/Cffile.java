@@ -1,5 +1,6 @@
 package dcc.dcfg;
 
+import dcc.DCoutputH;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +12,17 @@ public class Cffile {
     public String appver;
     
     public List names;
-    public List Data;
+    public List data;
     
-    public Cffile(){
+    private final DCoutputH log;
+    
+    public Cffile(DCoutputH logI){
+        log = logI;
         names = new ArrayList();
-        Data = new ArrayList();
+        data = new ArrayList();
         names.add(0, "null");
-        Data.add(0, new Cob("null", "null"));
-        Cob nul = (Cob) Data.get(0);
+        data.add(0, new Cob("null", "null"));
+        Cob nul = (Cob) data.get(0);
         nul.valueD = 0.0;
         nul.valueI = 0;
         nul.valueB = false;
@@ -27,31 +31,37 @@ public class Cffile {
     
     public void add(Cob in){
             names.add(in.name);
-            Data.add(in);
-            System.out.println("A new data was added at " + names.size() + " called " + in.name);       
+            data.add(in);
+            if (names.size() == data.size()){
+                 log.println("A new data was added at " + names.size() + " called " + in.name, "D");
+            }
+            else{
+                 log.println("Something went terribly wrong :" + names.size() + " is not same as  " + in.name, "debug");
+            }
     }
     public Cob get(String name){
         int addr = 0;
         addr = find(name);
-        return (Cob) Data.get(addr);
+        return (Cob) data.get(addr);
     }
     private int find(String find){
-        System.out.println("Now looking for " + find);
+        log.println("====]Now looking for " + "D");
         boolean run = true;
         int id = 0;
         String checking;
         boolean found = false;
         while (run){
             id++;
-            System.out.println("now looking at " + id);
+            log.println("==]now looking at " + id, "D");
             if(id > names.size()){
                 run = false;
-                return 0;
+                return 1;
             }
             else{
                 checking = (String) names.get(id);
+                log.println("==]" +checking, "D");
             if (checking.equalsIgnoreCase(find)){
-                System.out.println("found data titled " + find);
+                log.println("==]found data titled " + find, "D");
                 run = false;
             }
         //return if found
@@ -60,16 +70,16 @@ public class Cffile {
                 return id;
             }
         //continue
-            System.out.println(find + " wasn't found at " + id);
+            log.println("==]" +find + " wasn't found at " + id, "D");
             
             }
         }
-        return 0;
+        return 1;
     }
     public void remove(String name){
         
     }
     public void test(){
-        System.out.println(this.get("null").valueS);
+        log.println(this.get("title").name, "D");
     }
 }
