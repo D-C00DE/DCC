@@ -13,7 +13,7 @@ public class MultiString {
         lines = linesI;
         line.add(0, "null");
     }
-    public void addL(String linein){
-        line.add(line.size(),linein);
+    public void addL(String lineI){
+        line.add(line.size(),lineI);
     }
 }
