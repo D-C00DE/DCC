@@ -17,7 +17,7 @@ public class LoadCfg {
     Cffile cfg;
     public Cffile load(File fileI, DCoutputH logI){
         log = logI;
-        cfg = new Cffile();
+        cfg = new Cffile(log);
         cfg.file = fileI;
         try {
             readF();
@@ -96,27 +96,23 @@ public class LoadCfg {
            Cob out = new Cob(name);
             switch (typeS) {
                 case "B":
-                    if(valueS.equalsIgnoreCase("true")){
-                        out.valueB = true;
-                    }
-                    else{
-                        out.valueB = false;
-                    }
+                    if(valueS.equalsIgnoreCase("true")){out.valueB = true;      log.println("Wrote value true of type boolean as " + name + " to data tabble", "D");}
+                    else{out.valueB = false;                                    log.println("Wrote value false of type boolean as " + name + " to data tabble", "D");}
                     break;
                 case "I":
                     out.valueI = Integer.parseInt(valueS);
+                    log.println("Wrote value "+out.valueI+" of type Integer to data tabble", "D");
                     break;
                 case "D":
                     out.valueD = Double.parseDouble(valueS);
+                    log.println("Wrote value "+out.valueD+" of type Double to data tabble", "D");
                     break;
                 case "S":
                     out.valueS = valueS.trim();
+                    log.println("Wrote value |"+out.valueS+"| of type String to data tabble", "D");
                     break;
             }
            cfg.add(out);
-           log.println("Wrote value " + valueS + " of type " + typeS + " as " + name + " to data tabble");
-           log.println(out.name);
-           log.println(out.valueS);
            return true;
         }
         else{
