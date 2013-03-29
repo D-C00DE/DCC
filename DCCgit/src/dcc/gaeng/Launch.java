@@ -9,7 +9,5 @@ public class Launch {
 		File mapfile=dcc.m.system.getfile.one(log, "One map image file, please");
                 Game game = new Game();
                 game.setup(mapfile, log);
-		GameLoop GL = new GameLoop(game, log);
-                GL.start();
 	}
 }
