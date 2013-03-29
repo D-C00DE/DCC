@@ -3,27 +3,28 @@ package dcc.sApp;
 import dcc.DCoutputH;
 import dcc.sApp.parts.TickMe;
 
-public class Loop {
+public class Loop extends DCob{
 
     public boolean isRunning = false;
-    private byte tps = 0; 
+    private int tps = 0; 
     private DCoutputH log;
     private TickMe tbt;
 	
     public Loop(DCoutputH logI){
         log = logI;
-        tps = 50;
+        tps = 1000;
         tbt = new TickMe(log);
         log.println("Tick system loaded","D");
     }
-    public void start(){
+    public void start(long max){
         log.println("Loop just started", "D");
         //Speed controll variables
         long last = System.currentTimeMillis();
         int now;
         long ticks = 0;
+        long started = System.currentTimeMillis();
         final int planned;
-        planned = 100/tps;
+        planned = 1000/tps;
         int tick;
 	isRunning = true;
 	while (isRunning){
@@ -37,9 +38,19 @@ public class Loop {
             }
             ticks++;
             //real tick here:
-            tbt.tick();
+            if (tick() == true){
+            break;
+        }
+            if (max>0){if (max<ticks){break;}}
             
         }
-        log.println("Loop just Stopped", "D");
+        log.println("Loop just Stopped, it did "+ ticks +" ticks, and worked for "+ (System.currentTimeMillis() - started) +" miliseconds", "D");
+    }
+    @Override
+    public boolean tick(){
+        return tbt.tick();
+    }
+    public void add(DCob in){
+        tbt.Add(in);
     }
 }

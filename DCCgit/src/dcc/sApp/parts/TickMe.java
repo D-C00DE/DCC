@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 /**
  * @author dusakus
+ * This is the core of the ticking system.
+ * It can tick any DCob added to it
  */
 public class TickMe {
     DCoutputH log;
@@ -18,10 +20,16 @@ public class TickMe {
     public void Add(DCob in){
         tbt.add(in);
     }
-    public void tick(){
+    public boolean tick(){
+        boolean stop = false;
         for(DCob t : tbt){
-            if (t != null){t.tick();}
+            if (t != null){
+                if (t.tick() != false){
+                return true;
+                }
+            }
             else{log.println("tried to tick null !", "D");}
         }
+        return false;
     }
 }

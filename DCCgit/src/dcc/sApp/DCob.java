@@ -7,8 +7,10 @@ import dcc.DCoutputH;
  */
 public class DCob{
     DCoutputH log;
-    public void tick(){
+    public boolean tick(){
         //put your ticking code here
-        return;
+        
+        //return true if Loop should stop
+        return false;
     }
 }
