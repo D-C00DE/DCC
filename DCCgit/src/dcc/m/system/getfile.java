@@ -5,22 +5,19 @@ import java.io.File;
 import javax.swing.JFileChooser;
 
 public class getfile {
-
-	public static File one(dcc.DCoutputH log) {
+/*
+ * Hmm, I want to use multithreading, and this static modifier here looks scary to me :/
+ * I might change this...
+ */
+	public static File one(dcc.DCoutputH log,String title) {
 		JFileChooser dialog = new JFileChooser();
-		File file = null;
-		boolean checking = true;
+		File file;
+		dialog.setDialogTitle(title);
 		dialog.showOpenDialog(dialog);
 		dialog.setMultiSelectionEnabled(false);
 		dialog.setVisible(true);
-		while (checking == true){
-			file = dialog.getSelectedFile();
-			log.println("loading file: " + file);
-			if (file != null){
-				checking = false;
-				return file;
-			}
-		}
+		file = dialog.getSelectedFile();
+                log.println("loading file: " + file);
 		return file;
 	}
 

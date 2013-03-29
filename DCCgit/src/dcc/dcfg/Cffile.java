@@ -7,6 +7,7 @@ import java.util.List;
 public class Cffile {
     
     public File file;
+    public String fileVer;
     
     public String app;
     public String appver;

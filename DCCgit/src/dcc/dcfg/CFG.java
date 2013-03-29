@@ -15,6 +15,9 @@ public class CFG {
         log = logI;
         LoadCfg loader = new LoadCfg();
         cfg = loader.load(file, log);
-        loader = null;
+    }
+    public String getS(String find){
+        Cob obj = cfg.get(find);
+        return obj.valueS; 
     }
 }

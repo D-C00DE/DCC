@@ -49,6 +49,7 @@ public class LoadCfg {
                 if (line == null){
                     xend = false;
                 }
+            read.close();
         }
             
         }
@@ -71,6 +72,7 @@ public class LoadCfg {
         line = read.readLine();
         line = SimString.rmTo(line, sf);
         line = SimString.rmFrom(line, ef);
+        cfg.fileVer = line;
         ver = Info.supported.contains(line);
             log.println(line);
         line = read.readLine();
@@ -116,6 +118,14 @@ public class LoadCfg {
                     out.valueS = valueS.trim();
                     log.println("Wrote value |"+out.valueS+"| of type String to data tabble", "D");
                     break;
+                default:
+                    MultiString err = new MultiString(5);
+                    err.addL("Unrecognized Type : " + typeS);
+                    err.addL("You should check what's wrong with your dcf file");
+                    err.addL("It might be created for a newer version of Dcfg");
+                    err.addL("Currently supported Types are : B, I, D and S");
+                    err.addL("Your Dcfg version is: "+ dcc.dcfg.Info.ver +" and file is "+ cfg.fileVer);
+                    log.println(err, "E1");
             }
            cfg.add(out);
            return true;

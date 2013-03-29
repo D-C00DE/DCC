@@ -22,12 +22,15 @@ public class Game {
 		log = logI;
                 window.create(log);
 		BufferedImage mapIMG = null;
-		try {
-			mapIMG = ImageIO.read(mapfile);
-		} catch (IOException e) {
-		}
-		LoadMap MapLoader = new LoadMap(mapIMG);
-		map = MapLoader.getMap();
+		if (mapIMG != null){
+                    try {mapIMG = ImageIO.read(mapfile);}
+                    catch (IOException e) {log.println("I think I need an IMAGE (You know, some random colorfull dots)", "E6S");}
+                    LoadMap MapLoader = new LoadMap(mapIMG);
+                    map = MapLoader.getMap();
+            }
+                          else{
+                              log.println("I need a file, not null", "E6");
+                          }
 	}
 	public void tick(){
 		window.fin();

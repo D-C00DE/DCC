@@ -31,6 +31,11 @@ public class DCoutputH {
                 this.println(pre + (String) input.line.get(c));
                 }
     }
+    public void println (MultiString input){
+		for (int c = 1;c-1<input.lines;c++){
+                this.println((String) input.line.get(c));
+                }
+    }
     public boolean println (String input,String mode){
 		switch (mode) {
                     case "N":
@@ -69,6 +74,10 @@ public class DCoutputH {
                         break;
                     case "debug":
                         if(debug){this.println("[Debug]=> " + input);}
+                        break;
+                    case "E6S":
+                        this.println("[E6] Sorry, but"+ input);
+                        this.println("[E6] You might try again ;)");
                         break;
                     default:
                         this.println(input);
