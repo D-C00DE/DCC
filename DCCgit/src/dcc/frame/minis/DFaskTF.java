@@ -16,7 +16,8 @@ public class DFaskTF extends javax.swing.JFrame {
     boolean done = false;
     
     
-    public DFaskTF(String q, String i) {
+    public DFaskTF(){}
+    public void ask(String q, String i, char jtbd) {
         question = q;
         info = i;
         initComponents();
@@ -24,16 +25,15 @@ public class DFaskTF extends javax.swing.JFrame {
         jTextArea1.append(info);
         
     }
-    public static synchronized boolean ask(String q, String i){
-        DFaskTF obj = new DFaskTF(q,i);
-        obj.jButton3.setVisible(false);
+    public boolean ask(String q, String i){
+        ask(q,i,'a');
+        jButton3.setVisible(false);
         // button 3 is disabled for this question, boolean can only have TWO states ;)
-        obj.setVisible(true);
-        while (obj.done == false){}
-        obj.setVisible(false);
-        boolean out = obj.retb;
-        obj.dispose();
-        obj = null;
+        setVisible(true);
+        while (done == false){}
+        setVisible(false);
+        boolean out = retb;
+        dispose();
         return out;
     }
     @SuppressWarnings("unchecked")
