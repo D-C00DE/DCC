@@ -1,4 +1,4 @@
-package dcc.m.system;
+package dcc.frame.minis;
 
 import java.io.File;
 
@@ -10,6 +10,7 @@ public class getfile {
  * I might change this...
  */
 	public static File one(dcc.DCoutputH log,String title) {
+                log.println(title);
 		JFileChooser dialog = new JFileChooser();
 		File file;
 		dialog.setDialogTitle(title);
