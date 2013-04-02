@@ -37,7 +37,7 @@ public class Cffile {
                  log.println("A new data was added at " + names.size() + " called " + in.name, "D");
             }
             else{
-                 log.println("Something went terribly wrong :" + names.size() + " is not same as  " + in.name, "debug");
+                 log.println("Something went terribly wrong :" + names.size() + " is not same as  " + in.name, "E5");
             }
     }
     public Cob get(String name){
@@ -46,7 +46,7 @@ public class Cffile {
         return (Cob) data.get(addr);
     }
     private int find(String find){
-        log.println("====]Now looking for ", "D");
+        log.println("====]Now looking for " + find, "D");
         boolean run = true;
         int id = 0;
         String checking = "NULL";

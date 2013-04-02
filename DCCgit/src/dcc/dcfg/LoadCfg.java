@@ -27,7 +27,7 @@ public class LoadCfg {
             MultiString err = new MultiString(2);
             err.addL("An exception occured during reading data from");
             err.addL(fileI.toString());
-            log.println(err, "E3");
+            log.print(err, "E3");
         }
        return cfg;
     }
@@ -44,14 +44,13 @@ public class LoadCfg {
             line = read.readLine();
             boolean xend = true;
             while (xend){
-                readL(line);
                 line = read.readLine();
                 if (line == null){
-                    xend = false;
+                    break;
                 }
-            read.close();
+                readL(line);
         }
-            
+            read.close();
         }
         else {
             log.println("looks like the header of this file is broken","E3");
@@ -125,7 +124,7 @@ public class LoadCfg {
                     err.addL("It might be created for a newer version of Dcfg");
                     err.addL("Currently supported Types are : B, I, D and S");
                     err.addL("Your Dcfg version is: "+ dcc.dcfg.Info.ver +" and file is "+ cfg.fileVer);
-                    log.println(err, "E1");
+                    log.print(err, "E1");
             }
            cfg.add(out);
            return true;

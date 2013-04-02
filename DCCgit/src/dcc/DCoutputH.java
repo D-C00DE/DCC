@@ -26,12 +26,12 @@ public class DCoutputH {
                 //TODO logging to file ...
 		return true;
 	}
-    public void println (String pre,MultiString input){
+    public void print (String pre,MultiString input){
 		for (int c = 1;c-1<input.lines;c++){
                 this.println(pre + (String) input.line.get(c));
                 }
     }
-    public void println (MultiString input){
+    public void print (MultiString input){
 		for (int c = 1;c-1<input.lines;c++){
                 this.println((String) input.line.get(c));
                 }
@@ -85,54 +85,54 @@ public class DCoutputH {
     }
                 return true;
 	}
-    public boolean println (MultiString input,String mode){
+    public boolean print (MultiString input,String mode){
 		switch (mode) {
                     case "N":
-                        this.println("",input);
+                        this.print("",input);
                         break;
                     case "E1":
                         //for a little error
                         this.println("[E1] Whops ...");
-                        this.println("[E1]=> ",input);
+                        this.print("[E1]=> ",input);
                         this.println("[E1] of course it's still working :)");
                         break;
                     case "E2":
                         this.println("[E2] Something went wrong ...");
-                        this.println("[E2]=> ",input);
+                        this.print("[E2]=> ",input);
                         this.println("[E2] but it didn't crashed yet ;)");
                         break;
                     case "E3":
                         this.println("[E3] I have very bad news");
-                        this.println("[E3]=> ",input);
+                        this.print("[E3]=> ",input);
                         this.println("[E3] <Skips the problematic thingy>");
                         break;
                     case "E4":
                         this.println("[E4] Oh, it hurts so much");
-                        this.println("[E4]=> ",input);
+                        this.print("[E4]=> ",input);
                         this.println("[E4] i'm dying !");
                         this.println("BZZt Bzzt bzz...");
                         System.exit(2);
                     case "E5":
                         this.println("[E5] Critical error ocured:");
-                        this.println("[E5]=> ",input);
+                        this.print("[E5]=> ",input);
                         this.println("[E5] Killing in NOW");
                         this.println("!!!ERROR!!!");
                         System.exit(2);
                     case "D":
-                        if(debug){this.println("[Debug]=> ",input);}
+                        if(debug){this.print("[Debug]=> ",input);}
                         break;
                     case "debug":
-                        if(debug){this.println("[Debug]=> ",input);}
+                        if(debug){this.print("[Debug]=> ",input);}
                         break;
                     default:
-                        this.println("",input);
+                        this.print("",input);
 
     }
                 return true;
 	}
 
     //So funny, INTeger input = INTput
-    public boolean println(int INTput) {
+    public boolean printint(int INTput) {
                 System.out.println("[" + timed.format(time) + "] " + INTput);
 		
 		return true;
