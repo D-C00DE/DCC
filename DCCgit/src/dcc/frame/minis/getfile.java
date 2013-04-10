@@ -18,7 +18,7 @@ public class getfile {
 		dialog.setMultiSelectionEnabled(false);
 		dialog.setVisible(true);
 		file = dialog.getSelectedFile();
-                log.println("loading file: " + file);
+                log.println("loading file: " + file, "D");
 		return file;
 	}
 

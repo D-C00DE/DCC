@@ -20,7 +20,6 @@ public class DCboot {
                                 log.println("Thanks for playing :)");
                             default:
                                 log.println("invalid mode selected");
-                                System.exit(1);
                         }
                
 

@@ -1,6 +1,9 @@
 package dcc;
 
 import dcc.sify.MultiString;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,20 +13,66 @@ public class DCoutputH {
     boolean debug = false;
     Date time;
     DateFormat timed;
+    File logfile;
+    private boolean toFile = false;
+    PrintWriter FO;
 
     public DCoutputH(){
         timed = new SimpleDateFormat("yyyy-MM-dd,HH:mm:ss");
 	time = new Date();
-	}
+        logfile = new File(System.getProperty("user.dir")+"/stuD10/sys/DCC/CoreLog.dcl");
+	logfileC();
+    }
     
     public DCoutputH(boolean debugI){
         timed = new SimpleDateFormat("yyyy-MM-dd,HH:mm:ss");
 	time = new Date();
-	debug = debugI; 
+	debug = debugI;
+        logfile = new File(System.getProperty("user.dir")+"/stuD10/sys/DCC/CoreLog.dcl");
+	logfileC();
+    }
+    public DCoutputH(boolean debugI,String where){
+        timed = new SimpleDateFormat("yyyy-MM-dd,HH:mm:ss");
+	time = new Date();
+	debug = debugI;
+        logfile = new File(where);
+	logfileC();
+        
+    }
+     public DCoutputH(long jtbd){
+        timed = new SimpleDateFormat("yyyy-MM-dd,HH:mm:ss");
+	time = new Date();
+     }
+    private void logfileC(){
+        println("Setting up log file as "+ logfile.toString());
+        try{
+            if (logfile.exists()){
+                println(logfile.toString() + " already exist, clearing");
+            }
+            else{
+                println("creating new log file");
+                logfile.createNewFile();
+            }
+            if (logfile.canWrite()){
+                FO = new PrintWriter(logfile);
+            }
+            else{
+                println("Whops, no write acces");
+            }
+            
+            toFile = true;
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            toFile = false;
+            println("logging to file disabled");
+        }
     }
     public boolean println (String input){
 		System.out.println("[" + timed.format(time) + "] " + input);
-                //TODO logging to file ...
+                if (toFile){
+                    FO.println("[" + timed.format(time) + "] " + input);
+                }
 		return true;
 	}
     public void print (String pre,MultiString input){
@@ -76,7 +125,7 @@ public class DCoutputH {
                         if(debug){this.println("[Debug]=> " + input);}
                         break;
                     case "E6S":
-                        this.println("[E6] Sorry, but"+ input);
+                        this.println("[E6] Sorry, but "+ input);
                         this.println("[E6] You might try again ;)");
                         break;
                     default:
@@ -133,8 +182,13 @@ public class DCoutputH {
 
     //So funny, INTeger input = INTput
     public boolean printint(int INTput) {
-                System.out.println("[" + timed.format(time) + "] " + INTput);
+                println(INTput + "");
 		
 		return true;
+    }
+    public void END(String smthng){
+        println(smthng);
+        println("   <===[ This is the end ]===>    ");
+        FO.close();
     }
 }

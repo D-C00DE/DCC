@@ -11,9 +11,18 @@ import java.net.URL;
 public class DCC {
 
     public static void main(String[] args) {
-        DCoutputH log = new DCoutputH();
+        DCoutputH log = new DCoutputH(0L);
+        File HomeDir = new File(System.getProperty("user.dir")+"/stuD10/sys/DCC");
+        if(!HomeDir.isDirectory()){
+            log.println("Woho, new install :)");
+            dcc.sify.siFile.mkdir(System.getProperty("user.dir")+"/stuD10/sys/DCC");
+            dcc.sify.siFile.extract(ClassLoader.getSystemResource("dcc/DATA/defCfg.dcf"), new File(HomeDir.getPath()+"/config.dcf"), true);
+        }
         File SYScff = null;
         byte gfC = 0;
+        File aSYScff = new File(System.getProperty("user.dir")+"/stuD10/sys/DCC/config.dcf");
+        if (aSYScff.canRead()){if(aSYScff.isFile()){SYScff = aSYScff;}}
+        else{
         while(SYScff == null){
         SYScff = dcc.frame.minis.getfile.one(log, "CORE config file, please");
         if(SYScff == null){log.println("Hey, i asked you for a dcf file, didn't I?");gfC++;}
@@ -29,6 +38,7 @@ public class DCC {
             else{gfC = 0;}
         }
         }
+        }
         CFG SYScf = new CFG(SYScff, log);
         switch (SYScf.getS("OutputMode")){
             case("D"):
@@ -38,6 +48,7 @@ public class DCC {
         }
         DCboot run = new dcc.DCboot(log,SYScf);
         run.start();
+        log.END("BYE");
     }
 }
 
