@@ -3,7 +3,7 @@ package dcc.sApp;
 import dcc.DCoutputH;
 import dcc.sApp.parts.TickMe;
 
-public class Loop extends DCob{
+public class Loop implements DCob{
 
     public boolean isRunning = false;
     private int tps = 0; 
@@ -12,7 +12,7 @@ public class Loop extends DCob{
 	
     public Loop(DCoutputH logI){
         log = logI;
-        tps = 1000;
+        tps = 2;
         tbt = new TickMe(log);
         log.println("Tick system loaded","D");
     }
@@ -23,24 +23,23 @@ public class Loop extends DCob{
         int now;
         long ticks = 0;
         long started = System.currentTimeMillis();
-        final int planned;
-        planned = 1000/tps;
+        final int planned = 1000/tps;
         int tick;
 	isRunning = true;
 	while (isRunning){
             //Sped controll system ;)
-            now = (int) (last - System.currentTimeMillis());
+            now = (int) (System.currentTimeMillis() - last);
             last = System.currentTimeMillis();
             tick = planned - now;
-            if (tick > 0){ 
+            if (tick > 0){
                 try{Thread.sleep(tick);} 
                 catch(Exception e){log.println("Error in Loop, failed to sleep for "+tick+"ms", "E1");} 
+            } else { 
             }
             ticks++;
             //real tick here:
-            if (tick() == true){
-            break;
-        }
+            if (tick() == true){break;}
+            //END if finished
             if (max>0){if (max<ticks){break;}}
             
         }
@@ -52,5 +51,15 @@ public class Loop extends DCob{
     }
     public void add(DCob in){
         tbt.Add(in);
+    }
+
+    @Override
+    public boolean init() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean stop() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

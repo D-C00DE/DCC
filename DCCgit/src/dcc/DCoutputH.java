@@ -68,24 +68,24 @@ public class DCoutputH {
             println("logging to file disabled");
         }
     }
-    public boolean println (String input){
+    public synchronized boolean println (String input){
 		System.out.println("[" + timed.format(time) + "] " + input);
                 if (toFile){
                     FO.println("[" + timed.format(time) + "] " + input);
                 }
 		return true;
 	}
-    public void print (String pre,MultiString input){
+    public synchronized void print (String pre,MultiString input){
 		for (int c = 1;c-1<input.lines;c++){
                 this.println(pre + (String) input.line.get(c));
                 }
     }
-    public void print (MultiString input){
+    public synchronized void print (MultiString input){
 		for (int c = 1;c-1<input.lines;c++){
                 this.println((String) input.line.get(c));
                 }
     }
-    public boolean println (String input,String mode){
+    public synchronized boolean println (String input,String mode){
 		switch (mode) {
                     case "N":
                         this.println(input);
@@ -134,7 +134,7 @@ public class DCoutputH {
     }
                 return true;
 	}
-    public boolean print (MultiString input,String mode){
+    public synchronized boolean print (MultiString input,String mode){
 		switch (mode) {
                     case "N":
                         this.print("",input);
@@ -181,7 +181,7 @@ public class DCoutputH {
 	}
 
     //So funny, INTeger input = INTput
-    public boolean printint(int INTput) {
+    public synchronized boolean printint(int INTput) {
                 println(INTput + "");
 		
 		return true;

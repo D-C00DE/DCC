@@ -1,14 +1,18 @@
 package dcc.image;
 
+import dcc.image.parts.Pixel;
+import dcc.sApp.DCob;
 import java.awt.image.BufferedImage;
 
 /**
  * @author dusakus
  */
-public class DCimgObj {
+public class DCimgObj implements DCob{
 	BufferedImage img;
+        Pixel[][] pixels;
 	public DCimgObj (BufferedImage imgI){
 		img = imgI;
+                pixels = new Pixel[img.getWidth()][img.getHeight()];
 	}
 
 	public byte gColor(String select, int x, int y){
@@ -32,5 +36,23 @@ public class DCimgObj {
             }
 		
 	}
+    private void readIMG(){
+        //Image will be loaded to pixels[][] here
+    }
+
+    @Override
+    public boolean tick() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean init() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean stop() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

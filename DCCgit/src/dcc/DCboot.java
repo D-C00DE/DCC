@@ -5,7 +5,7 @@ import dcc.dcfg.CFG;
 public class DCboot {
     DCoutputH log;
     CFG SYScf;
-
+//Complette retype incomming !!!
     DCboot(DCoutputH logI,CFG SYScfI) {
         log = logI;
         SYScf = SYScfI;
