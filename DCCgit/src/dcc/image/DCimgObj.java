@@ -1,13 +1,13 @@
 package dcc.image;
 
 import dcc.image.parts.Pixel;
-import dcc.sApp.DCob;
+import dcc.sApp.DCec;
 import java.awt.image.BufferedImage;
 
 /**
  * @author dusakus
  */
-public class DCimgObj implements DCob{
+public class DCimgObj extends DCec{
 	BufferedImage img;
         Pixel[][] pixels;
 	public DCimgObj (BufferedImage imgI){

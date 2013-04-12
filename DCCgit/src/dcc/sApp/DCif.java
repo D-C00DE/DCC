@@ -1,12 +1,12 @@
 package dcc.sApp;
 
 import dcc.DCoutputH;
+import dcc.sApp.parts.TInfo;
 
 /**
  * @author dusakus
  */
-public interface DCob{
-    public String name = "Unknown Object";
+public interface DCif{
     public abstract boolean tick();
         //put your ticking code here
         //return true if Loop should stop or this thread should be stopped

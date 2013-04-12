@@ -2,8 +2,9 @@ package dcc.sApp;
 
 import dcc.DCoutputH;
 import dcc.sApp.parts.TickMe;
+import dcc.sify.boxes.LongB;
 
-public class Loop implements DCob{
+public class Loop implements DCif{
 
     public boolean isRunning = false;
     private int tps = 0; 
@@ -12,7 +13,7 @@ public class Loop implements DCob{
 	
     public Loop(DCoutputH logI){
         log = logI;
-        tps = 2;
+        tps = 12;
         tbt = new TickMe(log);
         log.println("Tick system loaded","D");
     }
@@ -43,14 +44,18 @@ public class Loop implements DCob{
             if (max>0){if (max<ticks){break;}}
             
         }
+        tbt.tickE();
         log.println("Loop just Stopped, it did "+ ticks +" ticks, and worked for "+ (System.currentTimeMillis() - started) +" miliseconds", "D");
     }
     @Override
     public boolean tick(){
         return tbt.tick();
     }
-    public void add(DCob in){
-        tbt.Add(in);
+    public void kill(LongB tk){
+        tbt.killQ.add(tk);
+    }
+    public LongB add(DCec in){
+        return tbt.Add(in);
     }
 
     @Override

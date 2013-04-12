@@ -189,6 +189,6 @@ public class DCoutputH {
     public void END(String smthng){
         println(smthng);
         println("   <===[ This is the end ]===>    ");
-        FO.close();
+        if(toFile){FO.close();}
     }
 }

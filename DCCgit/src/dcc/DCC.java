@@ -52,7 +52,9 @@ public class DCC {
         switch (SYScf.getS("OutputMode")){
             case("D"):
                 log = new DCoutputH(true);
+                break;
             default:
+                log = new DCoutputH(false);
                 break;
         }
         //Setting up and INIT
