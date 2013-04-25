@@ -1,5 +1,7 @@
 DCC
-===
+=== 
+
+MOVED TO BITBUCKET!
 
 D-C00DE Core is a main part of D-C00DE.It's written in java, and contains all main modules:
   gaeng/gaengLWJGL (game engine), 
@@ -32,3 +34,6 @@ Licensed under DLoc license (i wrote it)
   
         <=>---<>--{2013 stuDIO}--<>---<=>
 
+
+
+MOVED TO BITBUCKET!
